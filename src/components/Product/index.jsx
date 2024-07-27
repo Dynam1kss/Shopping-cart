@@ -2,8 +2,14 @@ import ButtonDelete from "../ButtonDelete";
 import Count from "../Count";
 import "./style.scss";
 
-const Product = ({ product, deleteProduct }) => {
-  const { img, title, price, count, id } = product;
+const Product = ({
+  product,
+  deleteProduct,
+  increase,
+  decrease,
+  changeValue,
+}) => {
+  const { img, title, priceTotal, count, id } = product;
 
   return (
     <section className="product">
@@ -11,8 +17,16 @@ const Product = ({ product, deleteProduct }) => {
         <img src={`./img/products/${img}`} alt={title} />
       </div>
       <div className="product__title">{title}</div>
-      <div className="product__count">{/* <Count /> */}</div>
-      <div className="product__price">{price} грн.</div>
+      <div className="product__count">
+        <Count
+          count={count}
+          increase={increase}
+          decrease={decrease}
+          id={id}
+          changeValue={changeValue}
+        />
+      </div>
+      <div className="product__price">{priceTotal} грн.</div>
       <div className="product__controls">
         <ButtonDelete deleteProduct={deleteProduct} id={id} />
       </div>
