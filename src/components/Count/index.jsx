@@ -24,7 +24,10 @@ const Count = ({ count, increase, decrease, changeValue, id }) => {
             increase(id);
           }}
         >
-          <img src="./img/icons/icon-up.svg" alt="Increase" />
+          <img
+            src={`${process.env.PUBLIC_URL}/img/icons/icon-up.svg`}
+            alt="Increase"
+          />
         </button>
         <button
           type="button"
@@ -33,7 +36,10 @@ const Count = ({ count, increase, decrease, changeValue, id }) => {
             decrease(id);
           }}
         >
-          <img src="./img/icons/icon-down.svg" alt="Decrease" />
+          <img
+            src={`${process.env.PUBLIC_URL}/img/icons/icon-down.svg`}
+            alt="Decrease"
+          />
         </button>
       </div>
     </div>

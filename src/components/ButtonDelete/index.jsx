@@ -6,7 +6,10 @@ const ButtonDelete = ({ deleteProduct, id }) => {
         deleteProduct(id);
       }}
     >
-      <img src="./img/icons/icon-cross.svg" alt="Delete" />
+      <img
+        src={`${process.env.PUBLIC_URL}/img/icons/icon-cross.svg`}
+        alt="Delete"
+      />
     </button>
   );
 };
