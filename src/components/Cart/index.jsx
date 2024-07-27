@@ -6,6 +6,19 @@ import data from "./../../data";
 
 const Cart = () => {
   const [cart, setCart] = React.useState(data);
+  const [total, setTotal] = React.useState({
+    // summing all items and their prices
+    price: cart.reduce((prev, curr) => prev + curr.priceTotal, 0),
+    count: cart.reduce((prev, curr) => prev + curr.count, 0),
+  });
+
+  React.useEffect(() => {
+    // updating footer total according to relevant data
+    setTotal({
+      price: cart.reduce((prev, curr) => prev + curr.priceTotal, 0),
+      count: cart.reduce((prev, curr) => prev + curr.count, 0),
+    });
+  }, [cart]);
 
   const deleteProduct = (id) => {
     setCart((cart) => {
@@ -79,7 +92,7 @@ const Cart = () => {
     <section className="cart">
       <CartHeader />
       {products}
-      <CartFooter />
+      <CartFooter total={total} />
     </section>
   );
 };

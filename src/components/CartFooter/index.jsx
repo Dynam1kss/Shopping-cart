@@ -1,10 +1,12 @@
 import "./style.scss";
 
-const CartFooter = () => {
+const CartFooter = ({ total }) => {
+  const { count, price } = total;
+
   return (
     <footer className="cart-footer">
-      <div className="cart-footer__count">3 одиниці</div>
-      <div className="cart-footer__price">155 000 грн.</div>
+      <div className="cart-footer__count">{count} одиниць</div>
+      <div className="cart-footer__price">{price} грн.</div>
     </footer>
   );
 };
