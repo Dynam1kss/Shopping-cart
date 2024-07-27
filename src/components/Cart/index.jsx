@@ -1,15 +1,34 @@
+import React from "react";
 import CartFooter from "../CartFooter";
 import CartHeader from "../CartHeader";
 import Product from "../Product";
 import data from "./../../data";
 
 const Cart = () => {
-  console.log(data);
+  const [cart, setCart] = React.useState(data);
+
+  const deleteProduct = (id) => {
+    setCart((cart) => {
+      return cart.filter((product) => {
+        return id !== product.id;
+      });
+    });
+  };
+
+  const products = cart.map((product) => {
+    return (
+      <Product
+        product={product}
+        key={product.id}
+        deleteProduct={deleteProduct}
+      />
+    );
+  });
 
   return (
     <section className="cart">
       <CartHeader />
-      <Product />
+      {products}
       <CartFooter />
     </section>
   );
